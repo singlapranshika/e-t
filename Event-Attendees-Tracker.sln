@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Event-Attendees-Tracker", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Event-Attendees-Tracker.Tests", "Presentation Layer\Event-Attendees-Tracker.Tests\Event-Attendees-Tracker.Tests.csproj", "{513FBC2E-118D-4CD8-89F8-0F542D6066ED}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Event_Attendees_Tracker_CustomResponseModel", "Event_Attendees_Tracker_CustomResponseModel\Event_Attendees_Tracker_CustomResponseModel.csproj", "{04FB6C84-A53A-4E72-B470-0D98C45111A9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +69,10 @@ Global
 		{513FBC2E-118D-4CD8-89F8-0F542D6066ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{513FBC2E-118D-4CD8-89F8-0F542D6066ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{513FBC2E-118D-4CD8-89F8-0F542D6066ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04FB6C84-A53A-4E72-B470-0D98C45111A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04FB6C84-A53A-4E72-B470-0D98C45111A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04FB6C84-A53A-4E72-B470-0D98C45111A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04FB6C84-A53A-4E72-B470-0D98C45111A9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -186,6 +186,7 @@
     <Content Include="Content\css\LayoutPageCss.css" />
     <Content Include="Content\css\Login_Page.css" />
     <Content Include="Content\css\ModifyEvent.css" />
+    <Content Include="Content\css\Reports.css" />
     <Content Include="Content\Images\EPAM_winter_party-081_72DPI RGB_.jpg" />
     <Content Include="Content\Images\Master_Page\Capture.png" />
     <Content Include="Content\Images\Master_Page\logo_white-blue.png" />
@@ -197,6 +198,7 @@
     <Content Include="Content\Js\Login\LoginValidation.js" />
     <Content Include="Content\Js\Login_Page.js" />
     <Content Include="Content\Js\ModifyEvent.js" />
+    <Content Include="Content\Js\Reports.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -234,6 +236,7 @@
     <Content Include="Views\Volunteer\Dashboard.cshtml" />
     <Content Include="Views\Shared\AccessDenied.cshtml" />
     <Content Include="Views\Organizer\_OrganizerNav.cshtml" />
+    <Content Include="Views\Organizer\Reports.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -252,6 +255,12 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Event_Attendees_Tracker_CustomResponseModel\Event_Attendees_Tracker_CustomResponseModel.csproj">
+      <Project>{04fb6c84-a53a-4e72-b470-0d98c45111a9}</Project>
+      <Name>Event_Attendees_Tracker_CustomResponseModel</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
