@@ -8,6 +8,7 @@ using Event_Attendees_Tracker.Filters;
 using Event_Attendees_Tracker.Middlewares;
 using Event_Attendees_Tracker.Modals;
 using  Event_Attendees_Tracker.Modals.Response_Models;
+using System.Collections.Generic;
 
 namespace Event_Attendees_Tracker.Controllers
 {
@@ -112,5 +113,25 @@ namespace Event_Attendees_Tracker.Controllers
         {
             return View();
         }
+
+        public ActionResult GetDetailsOfEvent(int? EventId)
+        {
+            TempData["EventID"] = EventId;
+            return View();
+        }
+
+        public ActionResult GetDetails()
+        {
+            string EventId = TempData["EventID"].ToString();
+            var request = new RestRequest("api/Organzier/GetDetailsOfStudents?EventId=" + EventId);
+            request.Method = Method.GET;
+            IRestResponse<EventAttendeesModelList> response = client.Execute<EventAttendeesModelList>(request);
+            List<EventAttendeesModelList> studentList = JsonConvert.DeserializeObject<List<EventAttendeesModelList>>(response.Content);
+            return Json(new { data = studentList }, JsonRequestBehavior.AllowGet);
+        }
+
+
+
+
     }
 }

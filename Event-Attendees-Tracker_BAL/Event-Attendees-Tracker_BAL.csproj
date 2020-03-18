@@ -51,6 +51,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User Actions\Events.cs" />
     <Compile Include="User Actions\IEvents.cs" />
+    <Compile Include="User Actions\StudentListForTable.cs" />
     <Compile Include="util\EncryptDecrypt.cs" />
     <Compile Include="util\EventRegistration.cs" />
     <Compile Include="util\IEncryptDecrypt.cs" />

@@ -3,7 +3,6 @@
     ViewBag.Title = "Organizer";
     Layout = "~/Views/Organizer/_OrganizerNav.cshtml";
     var activeEventsData = (List<ActiveEvents>)ViewData["EventsResponse"];
-   
 }
 <html lang="en">
 <head>
@@ -46,7 +45,7 @@
                              @:</div>
                              @:<div class="info">
                              @:<div class="title">
-                             @Html.ActionLink(test.EventName, "Dashboard", "Organizer", new {@class = "loginLink_home", @id = "addEvent_User"})
+                             @Html.ActionLink(test.EventName, "GetDetailsOfEvent", new {EventId=test.Id})
                              @:</div>
                              @:<div class="desc"><p><b>Event Date:</b>@test.EventDate.ToString("dd/MM/yyyy")</p><p><b>Time:</b>@test.StartTime.ToString("hh:mm tt") - @test.EndTime.ToString("hh:mm tt")</p><p>@test.Description</p> </div>
                              @:</div>
@@ -104,7 +103,7 @@
                                         @:</div>
                                         @:<div class="info">
                                         @:<div class="title">
-                                        @Html.ActionLink(test.EventName, "Dashboard", "Organizer", new {@class = "loginLink_home", @id = "addEvent_User"})
+                                        @Html.ActionLink(test.EventName, "GetDetailsOfEvent",  new {EventId=test.Id})
                                         @:</div>
                                         @:<div class="desc"><p><b>Event Date:</b>@test.EventDate.ToString("dd/MM/yyyy")</p><p><b>Time:</b>@test.StartTime.ToString("hh:mm tt") - @test.EndTime.ToString("hh:mm tt")</p><p>@test.Description</p> </div>
                                         @:</div>

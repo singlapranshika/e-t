@@ -57,6 +57,7 @@
     <Compile Include="DBQueries\EventQuery.cs" />
     <Compile Include="DBQueries\FetchActiveEvents.cs" />
     <Compile Include="DBQueries\FetchEvent.cs" />
+    <Compile Include="DBQueries\StudentDetails.cs" />
     <Compile Include="DBQueries\UserQuery.cs" />
     <Compile Include="Instances\DBInstance.cs" />
     <Compile Include="Migrations\202003050704580_Creating User Details Table.cs" />
