@@ -8,11 +8,12 @@ using Event_Attendees_Tracker.Filters;
 using Event_Attendees_Tracker.Middlewares;
 using Event_Attendees_Tracker.Modals;
 using  Event_Attendees_Tracker.Modals.Response_Models;
+using Event_Attendees_Tracker_CustomResponseModel;
 using System.Collections.Generic;
 
 namespace Event_Attendees_Tracker.Controllers
 {
-    [Authorize(Roles ="Organizer")]
+    [Authorize(Roles = "Organizer")]
     public class OrganizerController : Controller
     {
         RestClient client = new RestClient("https://localhost:44360/");
@@ -20,7 +21,7 @@ namespace Event_Attendees_Tracker.Controllers
         //GET: /Organizer/Organizer        
         public ActionResult Dashboard()
         {
-            var requestActive = new RestRequest("api/User/FetchActiveEvents?userId=" + (int)Session["userId"]) {Method = Method.GET};
+            var requestActive = new RestRequest("api/User/FetchActiveEvents?userId=" + (int)Session["userId"]) { Method = Method.GET };
             var responseActiveEvent = client.Execute(requestActive);
             ViewData["EventsResponse"] = ActiveEvents.FromJson(responseActiveEvent.Content);
 
@@ -36,7 +37,7 @@ namespace Event_Attendees_Tracker.Controllers
 
         //POST: /Organizer/CreateEvent
         [HttpPost]
-        [Authorize(Roles = "Organizer")]        
+        [Authorize(Roles = "Organizer")]
         public RedirectToRouteResult CreateEvent(EventModel responseEventModel)
         {
             var excelFilePath = "";
@@ -86,7 +87,7 @@ namespace Event_Attendees_Tracker.Controllers
                 Name = responseEventModel.name,
                 Venue = responseEventModel.venue,
                 Description = responseEventModel.description,
-                EventDate =Convert.ToDateTime(responseEventModel.eventDate),
+                EventDate = Convert.ToDateTime(responseEventModel.eventDate),
                 StartTime = responseEventModel.startTime,
                 EndTime = responseEventModel.endTime,
                 PosterImagePath = imageFilePath,
@@ -130,7 +131,41 @@ namespace Event_Attendees_Tracker.Controllers
             return Json(new { data = studentList }, JsonRequestBehavior.AllowGet);
         }
 
+        [HttpGet]
+        public ActionResult Reports()
+        {
+            try
+            {
+                //todo: Add ViewBag UserId
+                var userId = (int)Session["UserId"];
+                ViewBag.userId = userId;
+                var request = new RestRequest("api/Event/PastEventAttendees?userId=" + ViewBag.userId);
+                request.Method = Method.GET;
+                var response = client.Execute(request);
+                ViewData["eventData"] = null;
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    List<PastEventResponseModel> pastEventList = JsonConvert.DeserializeObject<List<PastEventResponseModel>>(response.Content);
+                    ViewData["eventData"] = pastEventList.ToArray();
+                }
+                else if (response.StatusCode == System.Net.HttpStatusCode.Created)
+                {
+                    ViewData["NoPastEvents"] = "No Events";
+                }
+                else
+                {
+                    ViewData["errorReports"] = "Error In Displaying Reports";
+                }
+            }
+            catch (Exception e)
+            {
+                ViewData["errorReports"] = e.Message;
+            }
 
+            return View();
+
+
+        }
 
 
     }

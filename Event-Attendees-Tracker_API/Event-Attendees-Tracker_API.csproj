@@ -175,6 +175,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\OrganzierController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -286,6 +287,10 @@
     <ProjectReference Include="..\Event-Attendees-Tracker_DAL\Event-Attendees-Tracker_DAL.csproj">
       <Project>{35d1b188-ac4c-46c1-a1b2-6045ae62d89f}</Project>
       <Name>Event-Attendees-Tracker_DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Event_Attendees_Tracker_CustomResponseModel\Event_Attendees_Tracker_CustomResponseModel.csproj">
+      <Project>{04fb6c84-a53a-4e72-b470-0d98c45111a9}</Project>
+      <Name>Event_Attendees_Tracker_CustomResponseModel</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
