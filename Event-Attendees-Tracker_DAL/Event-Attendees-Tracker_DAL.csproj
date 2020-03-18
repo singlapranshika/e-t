@@ -57,6 +57,7 @@
     <Compile Include="DBQueries\EventQuery.cs" />
     <Compile Include="DBQueries\FetchActiveEvents.cs" />
     <Compile Include="DBQueries\FetchEvent.cs" />
+    <Compile Include="DBQueries\StudentDetails.cs" />
     <Compile Include="DBQueries\PastEvent.cs" />
     <Compile Include="DBQueries\UserQuery.cs" />
     <Compile Include="Instances\DBInstance.cs" />

@@ -114,6 +114,23 @@ namespace Event_Attendees_Tracker.Controllers
         {
             return View();
         }
+
+        public ActionResult GetDetailsOfEvent(int? EventId)
+        {
+            TempData["EventID"] = EventId;
+            return View();
+        }
+
+        public ActionResult GetDetails()
+        {
+            string EventId = TempData["EventID"].ToString();
+            var request = new RestRequest("api/Organzier/GetDetailsOfStudents?EventId=" + EventId);
+            request.Method = Method.GET;
+            IRestResponse<EventAttendeesModelList> response = client.Execute<EventAttendeesModelList>(request);
+            List<EventAttendeesModelList> studentList = JsonConvert.DeserializeObject<List<EventAttendeesModelList>>(response.Content);
+            return Json(new { data = studentList }, JsonRequestBehavior.AllowGet);
+        }
+
         [HttpGet]
         public ActionResult Reports()
         {

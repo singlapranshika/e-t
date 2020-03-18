@@ -172,6 +172,7 @@
     <Compile Include="Modals\EventModal.cs" />
     <Compile Include="Modals\Response Models\ActiveEvents.cs" />
     <Compile Include="Modals\Response Models\dsd.cs" />
+    <Compile Include="Modals\Response Models\EventAttendeesModelList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -236,6 +237,7 @@
     <Content Include="Views\Volunteer\Dashboard.cshtml" />
     <Content Include="Views\Shared\AccessDenied.cshtml" />
     <Content Include="Views\Organizer\_OrganizerNav.cshtml" />
+    <Content Include="Views\Organizer\GetDetailsOfEvent.cshtml" />
     <Content Include="Views\Organizer\Reports.cshtml" />
   </ItemGroup>
   <ItemGroup>
