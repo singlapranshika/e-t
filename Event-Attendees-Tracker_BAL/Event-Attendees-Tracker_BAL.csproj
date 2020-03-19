@@ -33,6 +33,9 @@
     <CodeAnalysisRuleSet>Event-Attendees-Tracker_BAL.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
@@ -49,10 +52,16 @@
     <Compile Include="Models\ResponseModels\ILogin_ResponseModel.cs" />
     <Compile Include="Models\ResponseModels\Login_ResponseModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceActions\IMailer.cs" />
+    <Compile Include="ServiceActions\Mailer.cs" />
     <Compile Include="User Actions\Events.cs" />
     <Compile Include="User Actions\FetchPastEvents.cs" />
     <Compile Include="User Actions\IEvents.cs" />
+    <Compile Include="User Actions\IMarkAttendance.cs" />
+    <Compile Include="User Actions\ITryScanEvent.cs" />
+    <Compile Include="User Actions\MarkAttendance.cs" />
     <Compile Include="User Actions\StudentListForTable.cs" />
+    <Compile Include="User Actions\TryScanEvent.cs" />
     <Compile Include="util\EncryptDecrypt.cs" />
     <Compile Include="util\EventRegistration.cs" />
     <Compile Include="util\IEncryptDecrypt.cs" />
@@ -75,6 +84,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Event-Attendees-Tracker_BAL.ruleset" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,4 +1,5 @@
 using Event_Attendees_Tracker_BAL.Authentication;
+using Event_Attendees_Tracker_BAL.ServiceActions;
 using Event_Attendees_Tracker_BAL.User_Actions;
 using Event_Attendees_Tracker_BAL.util;
 using System.Web.Http;
@@ -21,6 +22,9 @@ namespace Event_Attendees_Tracker_API
             container.RegisterType<IEncryptDecrypt, EncryptDecrypt>();
             container.RegisterType<IMailSend, MailSend>();
             container.RegisterType<IEventRegistration, EventRegistration>();
+            container.RegisterType<ITryScanEvent, TryScanEvent>();
+            container.RegisterType<IMailer, Mailer>();
+            container.RegisterType<IMarkAttendance, MarkAttendance>();
             GlobalConfiguration.Configuration.DependencyResolver = new UnityDependencyResolver(container);
         }
     }
