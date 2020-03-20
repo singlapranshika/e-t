@@ -188,8 +188,10 @@
     <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\OrganzierController.cs" />
+    <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\VolunteerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -211,6 +213,7 @@
     <Content Include="Images\EPAM_LOGO_WhiteAndBlue.png" />
     <Content Include="Images\EPAM_winter_party-081_72DPIRGB.jpg" />
     <Content Include="Images\ProjectLogo.png" />
+    <Content Include="MailTemplate\QRMailTemplate.html" />
     <Content Include="MailTemplate\Register.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -236,6 +239,7 @@
     <Resource Include="Template\Event_Attendees_Tracker_Student_Registration_Template.xlsx">
       <BrowseToURL>template</BrowseToURL>
     </Resource>
+    <Content Include="MailTemplate\SourceSansPro-Regular.otf" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
