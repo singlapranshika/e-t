@@ -45,6 +45,9 @@
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      </Reference>
+    <Reference Include="shortid, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\shortid.2.0.0\lib\net45\shortid.dll</HintPath>
     </Reference>
     <Reference Include="QRCoder, Version=1.3.6.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\QRCoder.1.3.6\lib\net40\QRCoder.dll</HintPath>
@@ -68,6 +71,7 @@
   <ItemGroup>
     <Compile Include="Database Context\EAT_DBContext.cs" />
     <Compile Include="DBOperations\EventRegistrationDAL.cs" />
+    <Compile Include="DBQueries\AddingVoluneerQuery.cs" />
     <Compile Include="DBQueries\CheckStudentExists.cs" />
     <Compile Include="DBQueries\EventQuery.cs" />
     <Compile Include="DBQueries\FetchActiveEvents.cs" />
@@ -79,6 +83,7 @@
     <Compile Include="DBQueries\PastEvent.cs" />
     <Compile Include="DBQueries\TryScanEvent.cs" />
     <Compile Include="DBQueries\UserQuery.cs" />
+    <Compile Include="DBQueries\VolunteerNames.cs" />
     <Compile Include="Instances\DBInstance.cs" />
     <Compile Include="Migrations\202003050704580_Creating User Details Table.cs" />
     <Compile Include="Migrations\202003050704580_Creating User Details Table.designer.cs">

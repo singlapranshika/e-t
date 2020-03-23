@@ -64,6 +64,9 @@
     <Reference Include="RestSharp, Version=106.0.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
       <HintPath>..\packages\RestSharp.106.10.1\lib\net452\RestSharp.dll</HintPath>
     </Reference>
+    <Reference Include="shortid, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\shortid.2.0.0\lib\net45\shortid.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -176,6 +179,8 @@
     <Compile Include="Modals\Response Models\ActiveEvents.cs" />
     <Compile Include="Modals\Response Models\dsd.cs" />
     <Compile Include="Modals\Response Models\EventAttendeesModelList.cs" />
+    <Compile Include="Modals\Response Models\VolunteerEmailList.cs" />
+    <Compile Include="Modals\VolunteerModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -199,9 +204,11 @@
     <Content Include="Content\Images\Organizer_Dashboard\avatar.png" />
     <Content Include="Content\Images\Organizer_Dashboard\Event.jpg" />
     <Content Include="Content\Js\CreateCustom.js" />
+    <Content Include="Content\Js\CreateEventDropDown.js" />
     <Content Include="Content\Js\CreateEventValidation.js" />
     <Content Include="Content\Js\Customjs.js" />
     <Content Include="Content\Js\jsQR.js" />
+    <Content Include="Content\Js\createEventSession.js" />
     <Content Include="Content\Js\Login\LoginValidation.js" />
     <Content Include="Content\Js\Login_Page.js" />
     <Content Include="Content\Js\ModifyEvent.js" />
@@ -247,6 +254,7 @@
     <Content Include="Views\Organizer\GetDetailsOfEvent.cshtml" />
     <Content Include="Views\Organizer\Reports.cshtml" />
     <Content Include="Views\Volunteer\Scan.cshtml" />
+    <Content Include="Views\Organizer\AddVolunteer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

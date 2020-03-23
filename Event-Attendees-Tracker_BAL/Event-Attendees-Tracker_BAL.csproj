@@ -35,6 +35,9 @@
   <ItemGroup>
     <Reference Include="Elmah, Version=1.2.14706.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
+      </Reference>
+    <Reference Include="shortid, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\shortid.2.0.0\lib\net45\shortid.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -56,6 +59,7 @@
     <Compile Include="Models\ResponseModels\Login_ResponseModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceActions\IMailer.cs" />
+    <Compile Include="User Actions\AddingVolunteer.cs" />
     <Compile Include="ServiceActions\Mailer.cs" />
     <Compile Include="User Actions\Events.cs" />
     <Compile Include="User Actions\FetchPastEvents.cs" />
@@ -67,10 +71,13 @@
     <Compile Include="User Actions\TryScanEvent.cs" />
     <Compile Include="util\EncryptDecrypt.cs" />
     <Compile Include="util\EventRegistration.cs" />
+    <Compile Include="util\GetVolunteerNamesFromDAL.cs" />
     <Compile Include="util\IEncryptDecrypt.cs" />
     <Compile Include="util\IEventRegistration.cs" />
+    <Compile Include="util\ImageEmbed.cs" />
     <Compile Include="util\IMailSend.cs" />
     <Compile Include="util\MailSend.cs" />
+    <Compile Include="util\VolunteerMail.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Middlewares\" />
