@@ -28,7 +28,8 @@ namespace Event_Attendees_Tracker_DAL.Database_Context
         public DbSet<Master_CollegeDetails> Master_CollegeDetails { get; set; }
         public DbSet<RegisteredStudents> RegisteredStudents { get; set; }
         public DbSet<EventAttendees> EventAttendees { get; set; }
-        public DbSet<Master_DBRoles> Master_DBRoles { get; set; }        
+        public DbSet<Master_DBRoles> Master_DBRoles { get; set; }
+        public DbSet<UserMappedRoles> UserMappedRoles { get; set; }
 
     }
 }

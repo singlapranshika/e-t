@@ -40,6 +40,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="shortid, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\shortid.2.0.0\lib\net45\shortid.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -53,6 +56,7 @@
   <ItemGroup>
     <Compile Include="Database Context\EAT_DBContext.cs" />
     <Compile Include="DBOperations\EventRegistrationDAL.cs" />
+    <Compile Include="DBQueries\AddingVoluneerQuery.cs" />
     <Compile Include="DBQueries\CheckStudentExists.cs" />
     <Compile Include="DBQueries\EventQuery.cs" />
     <Compile Include="DBQueries\FetchActiveEvents.cs" />
@@ -60,6 +64,7 @@
     <Compile Include="DBQueries\StudentDetails.cs" />
     <Compile Include="DBQueries\PastEvent.cs" />
     <Compile Include="DBQueries\UserQuery.cs" />
+    <Compile Include="DBQueries\VolunteerNames.cs" />
     <Compile Include="Instances\DBInstance.cs" />
     <Compile Include="Migrations\202003050704580_Creating User Details Table.cs" />
     <Compile Include="Migrations\202003050704580_Creating User Details Table.designer.cs">

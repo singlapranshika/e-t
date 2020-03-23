@@ -3,7 +3,6 @@ using RestSharp;
 using System;
 using System.Diagnostics;
 using System.Web.Mvc;
-
 using Event_Attendees_Tracker.Filters;
 using Event_Attendees_Tracker.Middlewares;
 using Event_Attendees_Tracker.Modals;
@@ -31,6 +30,18 @@ namespace Event_Attendees_Tracker.Controllers
         //GET: Organizer/CreateEvent        
         public ActionResult CreateEvent()
         {
+            //to get volunteer names from the api
+            var request = new RestRequest("api/Organzier/GetVolunteerMails");
+            request.Method = Method.GET;
+            IRestResponse<VolunteerEmailList> response = client.Execute<VolunteerEmailList>(request);
+            List<VolunteerEmailList> volunteerEmailList = JsonConvert.DeserializeObject<List<VolunteerEmailList>>(response.Content);
+            List<string> volunteerMails = volunteerEmailList.ConvertAll<string>(x => x.ToString());
+            //converting list of type VolunteerEmailList to string type
+            for (int i = 0; i < volunteerEmailList.Count; i++)
+            {
+                volunteerMails[i] = volunteerEmailList[i].EmailID.ToString();
+            }
+            ViewBag.DropDownList = volunteerMails;
             ViewBag.Readonly = false;
             return View();
         }
@@ -165,6 +176,38 @@ namespace Event_Attendees_Tracker.Controllers
             return View();
 
 
+        }
+        /// <summary>
+        /// An Organizer action of Adding a Volunteer.
+        /// </summary>
+        /// <returns>An Add volunteer View with create action</returns>
+        public ActionResult AddVolunteer()
+        {
+            return View();
+        }
+        [HttpPost]
+        [AllowAnonymous]
+        ///<summary>Post Method of adding a Volunteer</summary>
+        public ActionResult AddVolunteer(VolunteerModel responseVolunteerModel)
+        {
+            var request = new RestRequest("api/Organzier/AddVolunteer");
+            request.Method = Method.POST;
+            var requestedData = new
+            {
+                FirstName = responseVolunteerModel.FirstName,
+                LastName = responseVolunteerModel.LastName,
+                UserUID = responseVolunteerModel.UserUID,
+                EmailID = responseVolunteerModel.EmailID,
+            };
+            request.AddJsonBody(JsonConvert.SerializeObject(requestedData, Formatting.Indented));
+            var response = client.Execute(request);
+            if (response.StatusCode == System.Net.HttpStatusCode.Created)
+            {
+                Debug.Print(response.Content);
+
+            }
+            ViewData["VolunteerAdded"] = "Volunteer Added Successfully";
+            return RedirectToAction("CreateEvent");
         }
 
 
