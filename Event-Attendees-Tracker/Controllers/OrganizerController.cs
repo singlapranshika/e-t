@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using Event_Attendees_Tracker.Filters;
 using Event_Attendees_Tracker.Middlewares;
 using Event_Attendees_Tracker.Modals;
-using  Event_Attendees_Tracker.Modals.Response_Models;
+using Event_Attendees_Tracker.Modals.Response_Models;
 using Event_Attendees_Tracker_CustomResponseModel;
 using System.Collections.Generic;
 
@@ -49,7 +49,7 @@ namespace Event_Attendees_Tracker.Controllers
         //POST: /Organizer/CreateEvent
         [HttpPost]
         [Authorize(Roles = "Organizer")]
-        public RedirectToRouteResult CreateEvent(EventModel responseEventModel)
+        public ActionResult CreateEvent(EventModel responseEventModel)
         {
             var excelFilePath = "";
             var imageFilePath = "";
@@ -78,10 +78,10 @@ namespace Event_Attendees_Tracker.Controllers
 
 
             //To Delete the file
-            if (System.IO.File.Exists(excelFilePath))
-            {
-                System.IO.File.Delete(excelFilePath);
-            }
+            //if (System.IO.File.Exists(excelFilePath))
+            //{
+            //    System.IO.File.Delete(excelFilePath);
+            //}
 
 
             //Request Config
@@ -115,7 +115,35 @@ namespace Event_Attendees_Tracker.Controllers
                 Debug.Print(response.Content);
 
             }
-            return RedirectToAction("Dashboard");
+            if (response.Content != null)
+            {
+                if (response.Content.Length > 2)
+                {
+                    Dictionary<string, string> stuDictionary =
+                        JsonConvert.DeserializeObject<Dictionary<string, string>>(response.Content);
+                    ExcelInvalidRows.InvalidRows(excelFilePath, stuDictionary);
+                    string FilePath = System.Web.HttpContext.Current.Server.MapPath($@"~/OutputExcel/");
+                    byte[] fileBytes = System.IO.File.ReadAllBytes(FilePath + "LogExcel" + ".xlsx");
+                    string fileName = "LogExcel" + ".xlsx";
+                    //To Delete the file
+                    if (System.IO.File.Exists(excelFilePath))
+                    {
+                        System.IO.File.Delete(excelFilePath);
+                    }
+                    //To Delete the file
+                    if (System.IO.File.Exists(FilePath + "LogExcel" + ".xlsx"))
+                    {
+                        System.IO.File.Delete(FilePath + "LogExcel" + ".xlsx");
+                    }
+                    return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
+                }
+                else
+                {
+                    return Redirect("Dashboard");
+                }
+
+            }
+            return View();
 
         }
 

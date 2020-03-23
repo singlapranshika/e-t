@@ -1,55 +1,71 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data;
 using Event_Attendees_Tracker_DAL.Instances;
 using Event_Attendees_Tracker_DAL.Models;
 using System.Diagnostics;
 using Event_Attendees_Tracker_DAL.DBQueries;
+using System.Linq;
 
 namespace Event_Attendees_Tracker_DAL.DBOperations
 {
     public class EventRegistrationDAL
     {
         static Event_Attendees_Tracker_DAL.Database_Context.EAT_DBContext _eatDBContext = DBInstance.getDBInstance();
-        public List<String> InsertTblRegisteredStudents(DataTable StudentsData)
+        public Dictionary<string, string> InsertTblRegisteredStudents(DataTable studentsData)
         {
-            List<String> StudentList = new List<string>();
-            try
+            var StudentList = new Dictionary<string, string>();
+
+            foreach (DataRow student in studentsData.Rows)
             {
-                foreach (DataRow student in StudentsData.Rows)
+                string EmailID = student.Field<string>("EmailID");
+                if (CheckStudentExists.CheckStudent(EmailID))
                 {
-                    String EmailID = student.ItemArray[3].ToString();
-                    if (CheckStudentExists.CheckStudent(EmailID))
+                    RegisteredStudents registeredStudents = null;
+                    try
                     {
-                        String CollegeName = student.ItemArray[5].ToString();
-                        _eatDBContext.RegisteredStudents.Add(new RegisteredStudents
+                        string collegeName = student.Field<string>("CollegeName");
+                        registeredStudents = new RegisteredStudents
                         {
-                            FirstName = student.ItemArray[0].ToString(),
-                            LastName = student.ItemArray[1].ToString(),
-                            ContactNumber = student.ItemArray[2].ToString(),
-                            EmailID = student.ItemArray[3].ToString(),
-                            StudentRollNumber = student.ItemArray[4].ToString(),
-                            CollegeDetails = _eatDBContext.Master_CollegeDetails.Where(m => m.CollegeName.Equals(CollegeName)).FirstOrDefault(),
-                            CreatedBy = 1,//Update with user sessionID
+                            FirstName = student.Field<string>("FirstName"),
+                            LastName = student.Field<string>("LastName"),
+                            ContactNumber = student.Field<string>("ContactNumber"),
+                            EmailID = student.Field<string>("EmailID"),
+                            StudentRollNumber = student.Field<string>("StudentRollNo"),
+                            CollegeDetails =
+                                _eatDBContext.Master_CollegeDetails.Single(m => m.CollegeName.Equals(collegeName)),
+                            CreatedBy = 1, //Update with user sessionID
                             CreatedDate = DateTime.Now
-                        });
+                        };
+                        _eatDBContext.RegisteredStudents.Add(registeredStudents);
+                        int temp = _eatDBContext.SaveChanges();
+                        if (!StudentList.ContainsKey(EmailID))
+                        {
+                            StudentList.Add(EmailID, "Successfully Inserted Data");
+                        }
                     }
-                    StudentList.Add(EmailID);
+                    catch (Exception)
+                    {
+                        if (!StudentList.ContainsKey(EmailID))
+                        {
+                            StudentList.Add(EmailID, "Invalid Data");
+
+                        }
+                        _eatDBContext.RegisteredStudents.Remove(registeredStudents);
+
+                    }
+
                 }
-                _eatDBContext.SaveChanges();
-                return StudentList;
+                else
+                {
+                    if (!StudentList.ContainsKey(EmailID))
+                    {
+                        StudentList.Add(EmailID, "Duplicate Data");
+                    }
+                }
             }
-            catch (Exception ex)
-            {
-                Debug.Print(ex.Message);
-                return null;
-            }
 
-
-
+            return StudentList;
         }
         public List<String> InsertTblEventAttendees(List<String> StudentList, int EventID)
         {

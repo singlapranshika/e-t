@@ -9,6 +9,6 @@ namespace Event_Attendees_Tracker_BAL.util
 {
     public interface IEventRegistration
     {
-       List<String> InsertTblRegisteredStudents(DataTable StudentRegistrationData, int EventID, string EventName);
+        Dictionary<string, string> InsertTblRegisteredStudents(DataTable StudentRegistrationData, int EventID, string EventName);
     }
 }

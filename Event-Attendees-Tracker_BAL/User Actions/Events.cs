@@ -18,7 +18,7 @@ namespace Event_Attendees_Tracker_BAL.User_Actions
         {
             _eventRegistration = eventRegistration;
         }
-        public bool AddEvent(string EventName, string Description, string Venue, string posterImagePath, TimeSpan startTime, TimeSpan endTime, DateTime eventDate, DataTable StudentRegistrationData,int CreatedBy)
+        public Dictionary<string, string> AddEvent(string EventName, string Description, string Venue, string posterImagePath, TimeSpan startTime, TimeSpan endTime, DateTime eventDate, DataTable StudentRegistrationData,int CreatedBy)
         {
             try
             {
@@ -26,13 +26,13 @@ namespace Event_Attendees_Tracker_BAL.User_Actions
 
                 //Save the attendees data
                 //Fetch Event ID and Name
-                List<String> responseAddStudentRegistrationData = _eventRegistration.InsertTblRegisteredStudents(null, 12, "CodeInject");
-                return responseAddEventData;
+                Dictionary<string, string> responseAddStudentRegistrationData = _eventRegistration.InsertTblRegisteredStudents(StudentRegistrationData, 60, "CodeInject");
+                return responseAddStudentRegistrationData;
             }
             catch(Exception ex)
             {
                 Debug.Print(ex.Message);
-                return false;
+                return null;
             }
         }
 

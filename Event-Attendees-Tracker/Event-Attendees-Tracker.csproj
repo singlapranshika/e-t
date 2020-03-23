@@ -173,6 +173,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Middlewares\ExcelInvalidRows.cs" />
     <Compile Include="Middlewares\JsonDeserializer.cs" />
     <Compile Include="Middlewares\ParseExcel.cs" />
     <Compile Include="Modals\EventModal.cs" />

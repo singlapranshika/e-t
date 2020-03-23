@@ -41,7 +41,7 @@ namespace Event_Attendees_Tracker.Middlewares
                             //Add rows to DataTable.
                             dt.Rows.Add();
                             int i = 0;
-                            foreach (IXLCell cell in row.Cells())
+                            foreach (IXLCell cell in row.Cells(workSheet.FirstCellUsed().Address.ColumnNumber, workSheet.LastCellUsed().Address.ColumnNumber))
                             {
                                 dt.Rows[dt.Rows.Count - 1][i] = cell.Value.ToString();
                                 i++;

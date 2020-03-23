@@ -25,26 +25,27 @@ namespace Event_Attendees_Tracker_API.Controllers
             _events = events;
         }
 
-        public HttpResponseMessage CreateEvent(EventModel requestEventData)
+        public Dictionary<string, string> CreateEvent(EventModel requestEventData)
         {
+            Dictionary<string, string> response;
             try
             {
-                var response = _events.AddEvent(requestEventData.Name, requestEventData.Description,
+                    response = _events.AddEvent(requestEventData.Name, requestEventData.Description,
                     requestEventData.Venue, requestEventData.PosterImagePath, requestEventData.StartTime,
                     requestEventData.EndTime, requestEventData.EventDate, requestEventData.AttendeesDataTable,
                     requestEventData.CreatedBy);
-                if (!response) return Request.CreateResponse(HttpStatusCode.BadRequest, "Check the Data");
+                if (response == null) return null;
             }
 
 
             catch (Exception ex)
             {
                 Debug.Print(ex.Message);
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Internal Server Error");
+                return null;
             }
 
 
-            return Request.CreateResponse(HttpStatusCode.Created, new {Message = "Successfully Created!"});
+            return response;
         }
 
         [HttpGet]

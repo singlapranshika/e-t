@@ -10,7 +10,7 @@ namespace Event_Attendees_Tracker_BAL.User_Actions
 {
     public interface IEvents
     {
-        bool AddEvent(string EventName, string Description, string Venue, string posterImagePath, TimeSpan startTime, TimeSpan endTime, DateTime eventDate, DataTable StudentRegistrationData,int CreatedBy);
+        Dictionary<string, string> AddEvent(string EventName, string Description, string Venue, string posterImagePath, TimeSpan startTime, TimeSpan endTime, DateTime eventDate, DataTable StudentRegistrationData,int CreatedBy);
         List<EventDetails> fetchActiveEvents(int userId);
     
     }
