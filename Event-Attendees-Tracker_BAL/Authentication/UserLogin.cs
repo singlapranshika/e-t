@@ -16,7 +16,7 @@ namespace Event_Attendees_Tracker_BAL.Authentication
         /// <param name="Email">User Email</param>
         /// <param name="Password">User Password</param>
         /// <returns>User Data with Role Inof with User ID</returns>        
-        public ILogin_ResponseModel LoginUserWithEmailAndPassword(string Email, string Password)
+        public Login_ResponseModel LoginUserWithEmailAndPassword(string Email, string Password)
         {
             //TODO:
             //Step 1: Fetch User With given Email
@@ -28,8 +28,11 @@ namespace Event_Attendees_Tracker_BAL.Authentication
                 //(Password.Equals(new EncryptDecrypt().Decrypt(responeUserData.Password)
                 if (Password.Equals(responeUserData.Password))
                 {
+                    Login_ResponseModel obj =
+                         Login_ResponseModel.GetInstance(rolename: "Organizer", userid: responeUserData.ID);
+                    
                     //Step 3: Return User Role with UserID
-                    return new Login_ResponseModel() { RoleName = "Organizer", UserID = responeUserData.ID };
+                    return obj;
                 }                
             }           
 

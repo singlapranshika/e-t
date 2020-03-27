@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace Event_Attendees_Tracker_BAL.Models.ResponseModels
 {
-    public interface ILogin_ResponseModel
+     interface ILogin_ResponseModel
     {
         string RoleName { get; set; }
-        int UserID { get; set; }
+        int UserID { get; set; } 
+        //ILogin_ResponseModel GetInstance();
     }
 }

@@ -21,7 +21,6 @@ namespace Event_Attendees_Tracker.Controllers
         {
             return View();
         }
-
         //POST: /User/Login
         [HttpPost]
         [AllowAnonymous]
@@ -44,8 +43,7 @@ namespace Event_Attendees_Tracker.Controllers
             ModelState.AddModelError("", "Invalid Email or Password");
             ViewData["Error"] = "Invalid Email or Password";
             return View("Login");
-            //return RedirectToAction("Organizer");
-
+            //return RedirectToAction("Organizer")
         }
 
         public RedirectToRouteResult Logout()

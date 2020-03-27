@@ -16,7 +16,7 @@ using Event_Attendees_Tracker_BAL.User_Actions;
 namespace Event_Attendees_Tracker_API.Controllers
 {
 
-    public class UserController : ApiController
+    public class  UserController : ApiController
     {
         private readonly IEvents _events;
 
@@ -60,6 +60,7 @@ namespace Event_Attendees_Tracker_API.Controllers
                 return Content(HttpStatusCode.BadRequest, new {error = ex.Message});
                 throw;
             }
+            
         }
 
         

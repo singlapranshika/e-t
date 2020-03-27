@@ -15,6 +15,7 @@ namespace Event_Attendees_Tracker.Controllers
     [Authorize(Roles = "Organizer")]
     public class OrganizerController : Controller
     {
+
         RestClient client = new RestClient("https://localhost:44360/");
 
         //GET: /Organizer/Organizer        
@@ -23,7 +24,7 @@ namespace Event_Attendees_Tracker.Controllers
             var requestActive = new RestRequest("api/User/FetchActiveEvents?userId=" + (int)Session["userId"]) { Method = Method.GET };
             var responseActiveEvent = client.Execute(requestActive);
             ViewData["EventsResponse"] = ActiveEvents.FromJson(responseActiveEvent.Content);
-
+            
             return View();
         }
 
@@ -31,7 +32,7 @@ namespace Event_Attendees_Tracker.Controllers
         public ActionResult CreateEvent()
         {
             //to get volunteer names from the api
-            var request = new RestRequest("api/Organzier/GetVolunteerMails");
+            var request = new RestRequest("api/Organizer/GetVolunteerMails");
             request.Method = Method.GET;
             IRestResponse<VolunteerEmailList> response = client.Execute<VolunteerEmailList>(request);
             List<VolunteerEmailList> volunteerEmailList = JsonConvert.DeserializeObject<List<VolunteerEmailList>>(response.Content);

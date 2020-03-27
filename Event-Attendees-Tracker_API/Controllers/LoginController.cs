@@ -1,4 +1,6 @@
 ﻿//System Imports
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net;
@@ -8,6 +10,7 @@ using System.Web.Http;
 //Custom Improts
 using Event_Attendees_Tracker_API.Models;
 using Event_Attendees_Tracker_BAL.Authentication;
+using Event_Attendees_Tracker_BAL.Models.ResponseModels;
 
 namespace Event_Attendees_Tracker_API.Controllers
 {
@@ -26,8 +29,11 @@ namespace Event_Attendees_Tracker_API.Controllers
             {
                 return Content(HttpStatusCode.BadRequest, new {Error="Either Email or Password is Invalid" });
             }
-            Debug.Print(responseData.UserID.ToString());
+           // Debug.Print(responseData.UserID.ToString());
+
             return Content(HttpStatusCode.OK, responseData);
         }
+
+       
     }
 }

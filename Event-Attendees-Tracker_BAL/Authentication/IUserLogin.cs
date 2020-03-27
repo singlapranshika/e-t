@@ -9,7 +9,7 @@ namespace Event_Attendees_Tracker_BAL.Authentication
 {
     public interface IUserLogin
     {
-        ILogin_ResponseModel LoginUserWithEmailAndPassword(string Email, string Password);
+        Login_ResponseModel LoginUserWithEmailAndPassword(string Email, string Password);
 
     }
 }

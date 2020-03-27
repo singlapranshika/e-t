@@ -45,7 +45,7 @@
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-      </Reference>
+    </Reference>
     <Reference Include="shortid, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\shortid.2.0.0\lib\net45\shortid.dll</HintPath>
     </Reference>
@@ -76,7 +76,7 @@
     <Compile Include="DBQueries\EventQuery.cs" />
     <Compile Include="DBQueries\FetchActiveEvents.cs" />
     <Compile Include="DBQueries\FetchEvent.cs" />
-    <Compile Include="DBQueries\from.cs" />
+    <Compile Include="DBQueries\IFetchEvents.cs" />
     <Compile Include="DBQueries\MarkAttendance.cs" />
     <Compile Include="DBQueries\ServiceQuery.cs" />
     <Compile Include="DBQueries\StudentDetails.cs" />

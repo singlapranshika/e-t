@@ -10,11 +10,11 @@ using  Event_Attendees_Tracker_DAL.Models;
 
 namespace Event_Attendees_Tracker_DAL.DBQueries
 {
-    public class FetchActiveEvents
+    public class FetchActiveEvents:IFetchEvents
     {
         static EAT_DBContext _eatDbContext = Event_Attendees_Tracker_DAL.Instances.DBInstance.getDBInstance();
 
-        public static List<EventDetails> GetActiveEvents(int userId)
+        public  List<EventDetails> GetActiveEvents(int userId)
         {
             try
             {

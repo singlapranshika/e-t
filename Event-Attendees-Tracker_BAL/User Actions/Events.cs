@@ -40,7 +40,8 @@ namespace Event_Attendees_Tracker_BAL.User_Actions
         {
             try
             {
-                return FetchActiveEvents.GetActiveEvents(userId);
+                IFetchEvents fetch=new FetchActiveEvents();
+                return fetch.GetActiveEvents(userId);
             }
             catch (Exception e)
             {
